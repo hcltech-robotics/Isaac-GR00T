@@ -274,6 +274,19 @@ class So100DualCamDataConfig(So100DataConfig):
 ###########################################################################################
 
 
+
+class SO100ScLabDataClass(So100DataConfig):
+    video_keys = ["video.overhead", "video.wrist"]
+    state_keys = ["state.single_arm", "state.gripper"]
+    action_keys = ["action.single_arm", "action.gripper"]
+    language_keys = ["annotation.human.task_description"]
+    observation_indices = [0]
+    action_indices = list(range(16))
+
+
+###########################################################################################
+
+
 class UnitreeG1DataConfig(BaseDataConfig):
     video_keys = ["video.rs_view"]
     state_keys = ["state.left_arm", "state.right_arm", "state.left_hand", "state.right_hand"]
