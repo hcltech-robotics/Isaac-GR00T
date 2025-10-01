@@ -29,6 +29,10 @@ from gr00t.utils.eval import calc_mse_for_single_trajectory
 
 warnings.simplefilter("ignore", category=FutureWarning)
 
+from gr00t.utils.gpu_detect import is_rtx_5000_series
+if is_rtx_5000_series():
+    warnings.filterwarnings("ignore", message=".*torchvision.*deprecated.*")
+
 """
 Example command:
 

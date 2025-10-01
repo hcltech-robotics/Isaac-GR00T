@@ -41,6 +41,7 @@ You can use bore to forward the port to your client: `159.223.171.199` is bore.p
 """
 
 import time
+import warnings
 from dataclasses import dataclass
 from typing import Literal
 
@@ -51,6 +52,10 @@ from gr00t.data.embodiment_tags import EMBODIMENT_TAG_MAPPING
 from gr00t.eval.robot import RobotInferenceClient, RobotInferenceServer
 from gr00t.experiment.data_config import load_data_config
 from gr00t.model.policy import Gr00tPolicy
+
+from gr00t.utils.gpu_detect import is_rtx_5000_series
+if is_rtx_5000_series():
+    warnings.filterwarnings("ignore", message=".*torchvision.*deprecated.*")
 
 
 @dataclass

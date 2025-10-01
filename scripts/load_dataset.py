@@ -20,6 +20,7 @@ This script is a replication of the notebook `getting_started/load_dataset.ipynb
 import json
 import pathlib
 import time
+import warnings
 from dataclasses import dataclass, field
 from pprint import pprint
 from typing import List, Literal
@@ -37,6 +38,9 @@ from gr00t.data.dataset import (
 from gr00t.data.embodiment_tags import EMBODIMENT_TAG_MAPPING, EmbodimentTag
 from gr00t.utils.misc import any_describe
 
+from gr00t.utils.gpu_detect import is_rtx_5000_series
+if is_rtx_5000_series():
+    warnings.filterwarnings("ignore", message=".*torchvision.*deprecated.*")
 
 def print_yellow(text: str) -> None:
     """Print text in yellow color"""
